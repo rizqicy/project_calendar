@@ -1,4 +1,4 @@
-module uart_tb();
+module juanito_tb();
 
 logic clk, rst_n, buf_valid, read_from_funky, data_ready, read_enable_uart;
 logic [7:0] di;
@@ -7,46 +7,54 @@ logic [31:0] data_to_funky;
 juanito middleman(
     .clk(clk),
     .rst_n(rst_n),
-    .data_valid(buf_valid),
+    .uart_data_valid(buf_valid),
     .funky_read(read_from_funky),
-    .di(di),
-    .data_ready(data_ready),
+    .din(di),
+    .funky_data_ready(data_ready),
     .read_enable(read_enable_uart),
     .data(data_to_funky)
 );
 
-initial begin
-    clk = ~clk;
-    #10;
-end
+always
+    #10 clk = ~clk;
+
 
 initial begin
-
+    clk = 0;
     rst_n = 1'b0;
+    buf_valid = 0;
     #25;
 
     rst_n = 1'b1;
 
     di = 8'd11;
     buf_valid = 1'b1;
+    wait(read_enable_uart)
+        buf_valid = 0;
     #50;
 
     di = 8'd10;
     buf_valid = 1'b1;
+    wait(read_enable_uart)
+        buf_valid = 0;
     #50;
 
     di = 8'd9;
     buf_valid = 1'b1;
+    wait(read_enable_uart)
+        buf_valid = 0;
     #50;
 
     di = 8'd8;
     buf_valid = 1'b1;
+    wait(read_enable_uart)
+        buf_valid = 0;
     #50;
 
-    funky_read = 1'b1;
+    read_from_funky = 1'b1;
     #20;
 
-    $finish
+    $finish;
 end
 
 endmodule
