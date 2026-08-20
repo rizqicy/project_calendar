@@ -1,6 +1,6 @@
 //`include "../src/fca.sv"
 
-module fca_tb ();
+module fca2005_tb ();
 
 
 logic [7:0] day;

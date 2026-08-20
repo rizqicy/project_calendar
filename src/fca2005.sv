@@ -38,12 +38,7 @@ module fca2005 (
     end    
 
     //DO THE YEAR number
-    logic [7:0] year_34_div4, year_34_sum, year_34_sum_mod7, year_12_mod4, year_12_lut, year_number;
-
-    mod7 mod7_year (
-        .num_in(year_34_sum),
-        .mod_out(year_34_sum_mod7)
-    );
+    logic [7:0] year_34_div4, year_34_sum, year_12_mod4, year_12_lut, year_number;
 
     mod4 mod4_year (
         .num_in(year_12),
@@ -59,7 +54,7 @@ module fca2005 (
         year_34_div4 = year_34 >> 8'd2;
         year_34_sum = year_34_div4 + year_34;
         
-        year_number = year_34_sum_mod7 + year_12_lut;
+        year_number = year_34_sum + year_12_lut;
     end
 
     //// DO THE LAST NUMBER DAY!!!
