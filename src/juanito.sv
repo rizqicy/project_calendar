@@ -14,7 +14,7 @@ module juanito(
     output logic [31:0] data
 );
 
-typedef enum logic [1:0] { IDLE, READ, WAIT, DONE } state;
+typedef enum logic [2:0] { IDLE, READ, TRANSITION, WAIT, DONE } state;
 state p_state, n_state;
 
 always_ff @(posedge clk or negedge rst_n) begin
@@ -48,15 +48,24 @@ always_comb begin
                 default: juanito_buffer = '0;
             endcase
 
+         //   if(uart_data_valid) begin
+         //           n_state = READ;
+         //   end
+         //   else begin
+         //       cnt = cnt + 1'b1;
+         //       n_state = |cnt ? WAIT : DONE;  //cnt = 2'b00 (we collected 4 data)
+         //   end
+            n_state = TRANSITION;
+        end
+        TRANSITION: begin
             if(uart_data_valid) begin
-                    n_state = READ;
+                    n_state = TRANSITION;
             end
             else begin
                 cnt = cnt + 1'b1;
                 n_state = |cnt ? WAIT : DONE;  //cnt = 2'b00 (we collected 4 data)
             end
         end
-
         WAIT: begin
             read_enable = 1'b0;
             n_state = uart_data_valid ? READ : WAIT;
