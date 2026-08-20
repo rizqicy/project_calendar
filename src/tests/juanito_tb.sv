@@ -10,7 +10,7 @@ juanito middleman(
     .uart_data_valid(buf_valid),
     .funky_read(read_from_funky),
     .din(di),
-    .funky_data_ready(data_ready),
+    .juanito_data_available(data_ready),
     .read_enable(read_enable_uart),
     .data(data_to_funky)
 );
@@ -20,6 +20,7 @@ always
 
 
 initial begin
+    read_from_funky = 1'b0;
     clk = 0;
     rst_n = 1'b0;
     buf_valid = 0;

@@ -4,9 +4,13 @@
 module juanito(
     input logic rst_n, clk,
 
-    input logic uart_data_valid, funky_read,
+    // from-to UART
+    input logic uart_data_valid,
     input logic [7:0] din,
-    output logic funky_data_ready, read_enable,
+    output logic read_enable,
+    // from-to FUNKY
+    input logic funky_read,
+    output logic juanito_data_available,
     output logic [31:0] data
 );
 
@@ -27,7 +31,7 @@ always_comb begin
         IDLE: begin
             cnt = 0;
             read_enable = 1'b0;
-            funky_data_ready = 1'b0;
+            juanito_data_available = 1'b0;
             data = '0;
             juanito_buffer = '0;
             n_state = uart_data_valid ? READ : IDLE;
@@ -60,11 +64,12 @@ always_comb begin
 
         DONE: begin
             read_enable = 1'b0;
-            funky_data_ready = 1'b1;
+            juanito_data_available = 1'b1;
             cnt = 2'b00;
             data = juanito_buffer;
             n_state = funky_read ? IDLE : DONE;
         end
+        default: n_state = IDLE;
     endcase
 end
 
