@@ -12,16 +12,16 @@ top dut(
 
 
 always
-        #5 clk = ~clk;
+        #50 clk = ~clk;
 
 initial begin
         clk = 0;
         rst_n = 0;
         rx = 1;
 
-        #20;
+        #200;
         rst_n = 1;
-        #50;
+        #500;
         rx = 1;
         #8680;
         rx = 0; //start

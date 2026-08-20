@@ -67,7 +67,7 @@ module simpleuart #(parameter integer DEFAULT_DIV = 1) (
 //		end
 //	end
 
-        assign cfg_divider = 868;
+        assign cfg_divider = 87;
 
 	always @(posedge clk) begin
 		if (!resetn) begin
