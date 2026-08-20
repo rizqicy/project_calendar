@@ -1,26 +1,29 @@
-`include "../src/fca.sv"
+//`include "../src/fca.sv"
 
 module fca_tb ();
+
 
 logic [7:0] day;
 logic [7:0] month;
 logic [7:0] year_12, year_34;
 logic [7:0] weekday, weekday_ref;
 
+//Year: first_digit, second_digit
+integer one_two, one_three, one_four, one_six;
+integer two_one;
+
 
 //TODO: Add dut
 
 task automatic reference_model (
-    input logic [7:0] day;
-    input logic [7:0] month;
-    input logic [7:0] year_12; 
-    input logic [7:0] year_34; 
-    output logic [7:0] weekday_ref;
+    input logic [7:0] day,
+    input logic [7:0] month,
+    input logic [7:0] year_12, 
+    input logic [7:0] year_34,
+    output logic [7:0] weekday_ref
 );
 
-    //Year: first_digit, second_digit
-    integer one_two, one_three, one_four, one_six;
-    integer two_one;
+    
 
     //0: Sunday
     //1: Monday
@@ -82,16 +85,11 @@ endtask
 
 //Compare result
 initial begin
-    //Enter testcase
-    integer test_day = 30;
-    integer test_month = 8;
-    integer test_year_12 = 20;
-    integer test_year_34 = 00;
     
-    day = test_day;
-    month = test_month;
-    year_12 = test_year_12;
-    year_34 = test_year_34;
+    day = 10;
+    month = 3;
+    year_12 = 19;
+    year_34 = 14;
 
     reference_model(
         day,
@@ -101,5 +99,9 @@ initial begin
         weekday_ref
     );
 
-    $display("Weekday: %0d", weekday_ref);
+$display("Weekday: %0d", weekday_ref);
+
 end
+
+
+endmodule
