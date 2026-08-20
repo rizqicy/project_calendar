@@ -1,4 +1,6 @@
-module juanito_with_funky_tb();
+`include "../src/juanito.sv"
+
+module funky_cu_tb();
 
 logic clk, rst_n, buf_valid, read_from_funky, data_ready, read_enable_uart;
 logic [7:0] di, data_out;
@@ -64,10 +66,8 @@ initial begin
     buf_valid = 1'b1;
     wait(read_enable_uart)
         buf_valid = 0;
-    #50;
 
-    read_from_funky = 1'b1;
-    #20;
+    #250;
 
     $finish;
 end
