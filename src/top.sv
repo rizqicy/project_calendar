@@ -1,5 +1,6 @@
 `include "../src/simpleuart.v"
 `include "../src/juanito.sv"
+`include "../src/funky_cu.sv"
 
 module top(
         input logic clk,
@@ -12,6 +13,10 @@ module top(
 logic [31:0] dat_do;
 logic uart_recv_valid;
 logic read_enable_uart;
+
+logic read_from_funky, data_ready;
+logic [7:0] data_out;
+logic [31:0] data_to_funky;
 
 
 simpleuart uart(
@@ -36,12 +41,26 @@ simpleuart uart(
 juanito middleman(
     .clk(clk),
     .rst_n(rst_n),
+
+    // from-to UART
     .uart_data_valid(uart_recv_valid),
-    .funky_read(read_from_funky),
-    .din(dat_do[7:0]),
-    .juanito_data_available(data_ready),
     .read_enable(read_enable_uart),
+    .din(dat_do[7:0]),
+
+    // from-to FUNKY
+    .funky_read(read_from_funky),
+    .juanito_data_available(data_ready),
     .data(data_to_funky)
+);
+
+funky_cu funky(
+    .clk(clk),
+    .rst_n(rst_n),
+
+    .din(data_to_funky),
+    .dout(data_out),
+    .done_reading(read_from_funky),
+    .juanito_data_available(data_ready)
 );
 
 endmodule
