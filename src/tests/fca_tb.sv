@@ -6,7 +6,6 @@ logic [7:0] day;
 logic [7:0] month;
 logic [7:0] year_12, year_34;
 logic [7:0] weekday, weekday_ref;
-logic clk;
 
 
 //TODO: Add dut
@@ -80,15 +79,6 @@ task automatic reference_model (
     //Write to output
     weekday_ref = result;
 endtask
-
-//Create clock stimulus
-initial begin
-    clk = 1'b0;
-    while (1) begin
-        clk = ~clk;
-        #10;
-    end
-end
 
 //Compare result
 initial begin
