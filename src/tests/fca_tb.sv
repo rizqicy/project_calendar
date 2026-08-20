@@ -12,6 +12,10 @@ logic [7:0] weekday, weekday_ref;
 integer one_two, one_three, one_four, one_six;
 integer two_one;
 
+integer fail, pass;
+fail = 0;
+pass = 0;
+
 
 //TODO: Add dut
 
@@ -85,21 +89,39 @@ endtask
 
 //Compare result
 initial begin
+    for (int d = 0; d < 27; d++) begin
+        for (int m = 1; m < 13; m++) begin
+            for (int y12 = 16; y12 < 22 ; y12++) begin
+                for (int y34 = 0; y34 < 100; y34++) begin
+                    day = d;
+                    month = m;
+                    year_12 = y12;
+                    year_34 = y34;
+
+                    reference_model(
+                        day,
+                        month,
+                        year_12,
+                        year_34,
+                        weekday_ref
+                    );
+
+                    if (weekday_ref == weekday) begin
+                        pass++;
+                    end else begin
+                        fail++;
+                        
+                        $display("Failed at : %0d,%0d,%2d%2d", d,m,y12,y34);
+                    end
+
+                    $display ( " Pass : %0 d " , pass );
+                    $display ( " Fail : %0 d " , fail );
+                end
+            end
+        end
+    end
     
-    day = 10;
-    month = 3;
-    year_12 = 19;
-    year_34 = 14;
 
-    reference_model(
-        day,
-        month,
-        year_12,
-        year_34,
-        weekday_ref
-    );
-
-$display("Weekday: %0d", weekday_ref);
 
 end
 
