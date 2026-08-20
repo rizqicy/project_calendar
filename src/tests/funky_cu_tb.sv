@@ -44,25 +44,25 @@ initial begin
 
     rst_n = 1'b1;
 
-    di = 8'd11;
+    di = 8'd25;
     buf_valid = 1'b1;
     wait(read_enable_uart)
         buf_valid = 1'b0;
     #50;
 
-    di = 8'd10;
+    di = 8'd08;
     buf_valid = 1'b1;
     wait(read_enable_uart)
         buf_valid = 0;
     #50;
 
-    di = 8'd9;
+    di = 8'd20;
     buf_valid = 1'b1;
     wait(read_enable_uart)
         buf_valid = 0;
     #50;
 
-    di = 8'd8;
+    di = 8'd01;
     buf_valid = 1'b1;
     wait(read_enable_uart)
         buf_valid = 0;

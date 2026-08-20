@@ -1,3 +1,5 @@
+`include "../src/fca2005.sv"
+
 module funky_cu(
     input logic clk, rst_n,
 
@@ -18,6 +20,14 @@ end
 
 logic [31:0] data_buf;
 
+fca2005 fca2005(
+        .day(data_buf[7:0]),
+        .month(data_buf[15:8]),
+        .year_12(data_buf[23:16]),
+        .year_34(data_buf[31:24]),
+        .weekday(dout)
+        );
+
 always_comb begin
 
     case(p_state)
@@ -33,7 +43,7 @@ always_comb begin
         end
 
         COMPUTE: begin
-            dout = 8'b10011001;
+            //dout = 8'b10011001;
             n_state = DONE;
         end
 
