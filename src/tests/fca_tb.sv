@@ -13,11 +13,19 @@ integer one_two, one_three, one_four, one_six;
 integer two_one;
 
 integer fail, pass;
-fail = 0;
-pass = 0;
+
 
 
 //TODO: Add dut
+fca2005 dut(
+    .day(day),
+    .month(month),
+    .year_12(year_12),
+    .year_34(year_34),
+
+    .weekday(weekday)
+);
+
 
 task automatic reference_model (
     input logic [7:0] day,
@@ -76,7 +84,7 @@ task automatic reference_model (
     endcase
 
     //Step 2.2
-    if (((year_34 % 4 == 0 &&  year_34 != 0) || (year_34 == 2'd00 && year_12 % 4 == 0)) && (month == 8'd1 || month == 8'd2 ) begin
+    if (((year_34 % 4 == 0 &&  year_34 != 0) || (year_34 == 2'd00 && year_12 % 4 == 0)) && (month == 8'd1 || month == 8'd2 )) begin
         two_one--;
     end
 
@@ -89,6 +97,9 @@ endtask
 
 //Compare result
 initial begin
+    fail = 0;
+    pass = 0;
+
     for (int d = 0; d < 27; d++) begin
         for (int m = 1; m < 13; m++) begin
             for (int y12 = 16; y12 < 22 ; y12++) begin
@@ -106,16 +117,18 @@ initial begin
                         weekday_ref
                     );
 
+                    #1;
                     if (weekday_ref == weekday) begin
                         pass++;
                     end else begin
                         fail++;
                         
                         $display("Failed at : %0d,%0d,%2d%2d", d,m,y12,y34);
+                        $display("Expected: %d\nActual: %d", weekday_ref, weekday);
                     end
 
-                    $display ( " Pass : %0 d " , pass );
-                    $display ( " Fail : %0 d " , fail );
+                    $display ( " Pass : %0d " , pass );
+                    $display ( " Fail : %0d " , fail );
                 end
             end
         end
