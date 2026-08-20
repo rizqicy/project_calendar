@@ -1,0 +1,27 @@
+create_library_set -name fast -timing $Tech_fast_lib
+create_library_set -name typ -timing $Tech_typ_lib
+create_library_set -name slow -timing $Tech_slow_lib
+
+create_rc_corner -name rc_best -qrc_tech ${qrc_path}/XH018_1143/QRC-Min/qrcTechFile -temp ${Tech_fast_temp}
+create_rc_corner -name rc_typ -qrc_tech ${qrc_path}/XH018_1143/QRC-Typ/qrcTechFile -temp ${Tech_typ_temp}
+create_rc_corner -name rc_worst -qrc_tech ${qrc_path}/XH018_1143/QRC-Max/qrcTechFile -temp ${Tech_slow_temp}
+
+create_opcond -name oc_fast -process {1.0} -voltage ${Tech_v_fast} -temperature ${Tech_fast_temp}
+create_opcond -name oc_typ  -process {1.0} -voltage ${Tech_v_typ}  -temperature ${Tech_typ_temp}
+create_opcond -name oc_slow -process {1.0} -voltage ${Tech_v_slow} -temperature ${Tech_slow_temp}
+
+create_timing_condition -name fast_timing -library_sets [list fast] -opcond oc_fast
+create_timing_condition -name typ_timing -library_sets [list typ] -opcond oc_typ
+create_timing_condition -name slow_timing -library_sets [list slow] -opcond oc_slow
+
+create_delay_corner -name fast_min -timing_condition fast_timing -rc_corner rc_best
+create_delay_corner -name typ      -timing_condition typ_timing  -rc_corner rc_typ
+create_delay_corner -name slow_max -timing_condition slow_timing -rc_corner rc_worst
+
+create_constraint_mode -name basic_constraint -sdc_files ${cons}/basic_${tech_node_used}.sdc
+
+create_analysis_view -name analysis_normal_fast_min -constraint_mode {basic_constraint} -delay_corner fast_min
+create_analysis_view -name analysis_normal_typ -constraint_mode {basic_constraint} -delay_corner typ
+create_analysis_view -name analysis_normal_slow_max -constraint_mode {basic_constraint} -delay_corner slow_max
+
+set_analysis_view -setup [list analysis_normal_slow_max] -hold [list analysis_normal_fast_min]
