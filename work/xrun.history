@@ -1,0 +1,4 @@
+#e1(20Aug2026:16:15:36): source ./xcelium.d/env.d/env.history.20Aug2026_16_15_36
+s1(20Aug2026:16:15:36):  xrun -f /home/edu4chip_18/project_calendar/scripts/xrun.conf 
+#e2(20Aug2026:16:16:14): source ./xcelium.d/env.d/env.history.20Aug2026_16_16_14
+s2(20Aug2026:16:16:14):  xrun -clean 

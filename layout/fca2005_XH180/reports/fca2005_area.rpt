@@ -1,0 +1,7 @@
+    Hinst Name       Module Name          Inst Count           Total Area
+----------------------------------------------------------------------
+fca2005                                           77             1939.302
+  chklpyr            chklpyr                       5               60.211
+  lut_month          lut_month                    15              203.213
+  lut_yearr          lut_year                      3               37.632
+  mod7_total         mod7                         17              356.250

@@ -1,0 +1,4 @@
+PortName: clk  NetName: clk Dir: 1
+PortName: rst_n  NetName: rst_n Dir: 1
+PortName: rx  NetName: rx Dir: 1
+PortName: tx  NetName: tx Dir: 2

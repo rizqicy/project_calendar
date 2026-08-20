@@ -1,0 +1,12 @@
+::db::check_and_set_root_attr add_rings_avoid_short true
+::db::check_and_set_root_attr extract_rc_coupling_cap_threshold 3.0
+::db::check_and_set_root_attr extract_rc_relative_cap_threshold 0.03
+::db::check_and_set_root_attr extract_rc_total_cap_threshold 5.0
+::db::check_and_set_root_attr floorplan_default_tech_site core_hd
+::db::check_and_set_root_attr floorplan_first_row_site_index 0
+::db::check_and_set_root_attr floorplan_last_row_site_index -1
+::db::check_and_set_root_attr floorplan_max_io_height false
+::db::check_and_set_root_attr ilm_keep_high_fanout_critical_insts false
+::db::check_and_set_root_attr place_global_place_io_pins true
+::db::check_and_set_root_attr route_extract_third_party_compatible false
+::db::check_and_set_root_attr write_def_stream_check_uncolored false

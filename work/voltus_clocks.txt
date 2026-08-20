@@ -1,0 +1,2 @@
+ClockName Frequency   Period  RiseTime  FallTime
+default    1e+08    10   0    5  

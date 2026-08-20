@@ -1,0 +1,105 @@
+Switching SI Aware to true by default in postroute mode   
+AAE_INFO: switching set_db delaycal_enable_si from false to true ...
+AAE_INFO: The setting is changed from false to true in set_db delaycal_enable_si
+*** time_design #1 [begin] () : totSession cpu/real = 0:03:26.8/0:05:42.6 (0.6), mem = 2989.0M
+ Reset EOS DB
+Ignoring AAE DB Resetting ...
+#Start Design Signature (0)
+#Finish Inst Signature in MT(19966640)
+#Finish Net Signature in MT(26525068)
+#Finish SNet Signature in MT (30255615)
+#Run time and memory report for RC extraction:
+#RC extraction running on  Xeon 2.60GHz 28160KB Cache 80CPU.
+#Run Statistics for snet signature:
+#   Cpu time = 00:00:00, elapsed time = 00:00:00 .
+#   Increased memory =     0.00 (MB), total memory =  2988.99 (MB), peak memory =  3047.06 (MB)
+#Run Statistics for Net Final Signature:
+#   Cpu time = 00:00:00, elapsed time = 00:00:00 .
+#   Increased memory =     0.00 (MB), total memory =  2988.99 (MB), peak memory =  3047.06 (MB)
+#Run Statistics for Net launch:
+#   Cpu time = 00:00:00, elapsed time = 00:00:00 .
+#   Increased memory =     0.00 (MB), total memory =  2988.99 (MB), peak memory =  3047.06 (MB)
+#Run Statistics for Net init_dbsNet_slist:
+#   Cpu time = 00:00:00, elapsed time = 00:00:00 .
+#   Increased memory =     0.00 (MB), total memory =  2988.99 (MB), peak memory =  3047.06 (MB)
+#Run Statistics for net signature:
+#   Cpu time = 00:00:00, elapsed time = 00:00:00 .
+#   Increased memory =     0.00 (MB), total memory =  2988.99 (MB), peak memory =  3047.06 (MB)
+#Run Statistics for inst signature:
+#   Cpu time = 00:00:00, elapsed time = 00:00:00 .
+#   Increased memory =    -0.00 (MB), total memory =  2988.99 (MB), peak memory =  3047.06 (MB)
+The design is extracted. Skipping TQuantus.
+Starting delay calculation for Setup views
+AAE_INFO: opIsDesignInPostRouteState() is 1
+AAE DB initialization (MEM=2996.910156 CPU=0:00:00.0 REAL=0:00:00.0) 
+AAE_INFO: resetNetProps viewIdx 0 
+Starting SI iteration 1 using Infinite Timing Windows
+#################################################################################
+# Design Stage: PostRoute
+# Design Name: top
+# Design Mode: 180nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: SPEF/RCDB 
+# Signoff Settings: SI On 
+#################################################################################
+AAE_INFO: 1 threads acquired from CTE.
+Start delay calculation (fullDC) (1 T). (MEM=2992.39)
+Reading RCDB with compressed RC data.
+Total number of fetched objects 668
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+AAE_INFO-618: Total number of nets in the design is 812,  83.3 percent of the nets selected for SI analysis
+End delay calculation. (MEM=3049.45 CPU=0:00:00.3 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=2990.82 CPU=0:00:00.9 REAL=0:00:01.0)
+Save waveform /home/edu4chip_18/project_calendar/work/innovus_temp_3435128_b12acddd-786a-4b77-b4e7-160af6b8cafd_tallinn.emse.fr_edu4chip_18_DH9k1p/.AAE_vFi479/.AAE_3435128_b12acddd-786a-4b77-b4e7-160af6b8cafd/waveform.data...
+Loading CTE timing window with TwFlowType 0...(CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 3027.3M)
+Add other clocks and setupCteToAAEClockMapping during iter 1
+Loading CTE timing window is completed (CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 3027.4M)
+Starting SI iteration 2
+Start delay calculation (fullDC) (1 T). (MEM=3026.59)
+Glitch Analysis: View analysis_normal_slow_max -- Total Number of Nets Skipped = 14. 
+Glitch Analysis: View analysis_normal_slow_max -- Total Number of Nets Analyzed = 676. 
+Total number of fetched objects 668
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+AAE_INFO-618: Total number of nets in the design is 812,  10.0 percent of the nets selected for SI analysis
+End delay calculation. (MEM=3043.68 CPU=0:00:00.1 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=3043.68 CPU=0:00:00.1 REAL=0:00:00.0)
+*** Done Building Timing Graph (cpu=0:00:02.2 real=0:00:02.0 totSessionCpu=0:03:29 mem=3035.2M)
+** INFO: Initializing Glitch Interface
+** INFO: Initializing Glitch Interface
+
+OptSummary:
+
+------------------------------------------------------------------
+         time_design Summary
+------------------------------------------------------------------
+
+Setup views included:
+ analysis_normal_slow_max 
+
++--------------------+---------+---------+---------+
+|     Setup mode     |   all   | reg2reg | default |
++--------------------+---------+---------+---------+
+|           WNS (ns):|  0.000  |   N/A   |  0.000  |
+|           TNS (ns):|  0.000  |   N/A   |  0.000  |
+|    Violating Paths:|    0    |   N/A   |    0    |
+|          All Paths:|    0    |   N/A   |    0    |
++--------------------+---------+---------+---------+
+
++----------------+-------------------------------+------------------+
+|                |              Real             |       Total      |
+|    DRVs        +------------------+------------+------------------|
+|                |  Nr nets(terms)  | Worst Vio  |  Nr nets(terms)  |
++----------------+------------------+------------+------------------+
+|   max_cap      |      0 (0)       |   0.000    |      0 (0)       |
+|   max_tran     |      0 (0)       |   0.000    |      0 (0)       |
+|   max_fanout   |      0 (0)       |     0      |      0 (0)       |
+|   max_length   |      0 (0)       |     0      |      0 (0)       |
++----------------+------------------+------------+------------------+
+
+Density: 79.904%
+------------------------------------------------------------------
+Reported timing to dir ./timingReports
+Total CPU time: 2.94 sec
+Total Real time: 4.0 sec
+Total Memory Usage: 3039.183594 Mbytes
+Reset AAE Options

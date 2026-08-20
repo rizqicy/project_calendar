@@ -1,0 +1,21 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-MESSAGES
++EMGRLOG
+/home/edu4chip_18/project_calendar/logs/xrun.log
+-XLSTIME
+1787235375
+-XLKEEP
+-XLMODE
+./xcelium.d/run.lnx8664.25.03.d
+-RUNMODE
+-CDSLIB
+./xcelium.d/run.lnx8664.25.03.d/cds.lib
+-HDLVAR
+./xcelium.d/run.lnx8664.25.03.d/hdl.var
+-XLNAME
+xrun
+-XLVERSION
+"TOOL:	xrun(64)	25.03-s001"

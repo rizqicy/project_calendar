@@ -1,0 +1,11 @@
+    Hinst Name              Module Name          Inst Count           Total Area
+-----------------------------------------------------------------------------
+top                                                     577            14673.971
+  funky                     funky_cu                    118             3078.298
+    funky/fca2005           fca2005                      76             1931.776
+      funky/fca2005/chklpyr chklpyr                       5               60.211
+      funky/fca2005/lut_month lut_month                    15              203.213
+      funky/fca2005/lut_yearr lut_year                      3               37.632
+      funky/fca2005/mod7_total mod7                         17              356.250
+  middleman                 juanito                     122             2661.837
+  uart                      simpleuart                  336             8923.802

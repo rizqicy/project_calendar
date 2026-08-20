@@ -1,0 +1,2034 @@
+#************************************************/
+# Copyright        : (c) All Rights Reserved
+# Company          : X-FAB Global Services GmbH
+# Address          : Haarbergstr. 67, 99097 Erfurt, Germany
+#
+# File             : xh018_xx43_HD_MET4_METMID_METTHK.lef (M1-M2-M3-M4-METTP-METTPL - for HD-Library)
+# Description      : Layout Exchange Format for Cadence digital tools
+#                  : with extended overlap via's
+#                  :
+#                  : Please, do not use this files together with Wroute
+#                  :
+#                  : for normal routing density use
+#                  : "setNanoRouteMode -dbViaWeight { *_beo 4 *_eo 3 *_C* 5 *_C*_beo 9 *_C*_eo 7 }"
+#                  :
+#                  : Please Note: This LEF files doesn't contain any 
+#                  : capacitance values. Please use the .capTbl files or QRC 
+#                  : for the parasitic extraction.
+#                  :
+# Technology       : xh018_**43
+#
+# Lib version      : V 9.0.1
+# Date             : Tue Dec 6 16:09:37 UTC 2022
+# Description      : Formal version update according to PDS/DR specs v9.0
+#
+# Lib version      : V 8.0.1.1
+# Date             : Wed Aug 28 13:05:56 UTC 2019
+# Description      : Added missing vias in technology options xx5x
+#
+# Lib version      : V 8.0.1
+# Date             : Wed Jul 17 13:39:44 UTC 2019
+# Description      : Updated header and value representations, update of METTPL edge cap, removed MINWIDTH
+#
+# Lib_version      : V 7.0.3
+# Last Modified by : wad
+# DATE             : Fri Jun 22 08:27:43 UTC 2018
+# description      : changed the MET resistance values
+#                  : used reduced ANTENNASIDEAREARATIO to prevent problems
+#                  : with PVS - antenna checks
+#
+# Lib_version      : V 7.0.2
+# Last Modified by : wad
+# DATE             : Thu Mar 22 14:49:45 UTC 2018
+# description      : Used for all metal thickness parameter the high value to prevent antenna violations
+#
+# Lib_version      : V 7.0.1
+# Last Modified by : wad
+# DATE             : Thu Nov 30 15:34:43 UTC 2017
+# description      : New PDK version; update to BEOL 2.0.1
+#
+# Lib_version      : V 6.3.1
+# Last Modified by : wad
+# DATE             : Thu Jan 5 12:26:38 UTC 2017
+# description      : Change all parasitic values
+#
+# Lib_version      : V 5.0.1.2
+# Last Modified by : wad
+# DATE             : Fri Dec 12 09:20:26 UTC 2014
+# description      : change the the MET1/MET3/MET5 OFFSET for the HD Library
+#
+# Lib_version      : V 5.0.1.1
+# Last Modified by : wad
+# DATE             : Thu Dec 11 08:20:58 UTC 2014
+# description      : change the EDGECAPACITANCE value for MET3
+#
+# Lib_version      : V 5.0.1
+# Last Modified by : wad
+# DATE             : Thu Nov 27 11:36:35 UTC 2014
+# description      : new PDK version
+#                  : new Antennacheck model
+#                  : typical values for layer thickness, capacitance parameter 
+#                    and resistors
+#
+# Lib_version      : V 4.1.3
+# Last Modified by : wad
+# DATE             : Tue May 27 07:03:34 UTC 2014
+# description      : new via's for the HD library (VIA1_CH1_so2, VIA1_CH2_so2,VIA1_CH1_so_hd2, VIA1_CH2_so_hd2)
+#
+# Lib_version      : V 4.1.2
+# Last Modified by : wad
+# DATE             : Mon May 26 14:32:48 UTC 2014
+# description      : repair VIATPL definition
+#
+# Lib_version      : V 4.1.1
+# Last Modified by : wad
+# DATE             : Mon Mar 31 12:40:03 UTC 2014
+# description      : new via's for the HD library (VIA*CH*_hd and VIA*CV*_hd)
+#
+# Lib_version      : V 4.0.7
+# Last Modified by : wad
+# DATE             : Wed Oct 16 12:59:26 UTC 2013
+# description      : repair version number
+#
+# Lib_version      : V 4.0.6
+# Last Modified by : wad
+# DATE             : Mon Sep 9 07:45:14 UTC 2013
+# description      : reinsert MET capacitance values
+#
+# Lib_version      : V 4.0.5
+# Last Modified by : wad
+# DATE             : Thu Jul 25 12:17:04 UTC 2013
+# description      : add MAXWIDTH parameter for MET layer
+#
+# Lib_version      : V 4.0.2
+# Last Modified by : wad
+# DATE             : Wed Apr 10 10:49:05 UTC 2013
+# description      : Additonal information over incompatibility too Wroute
+#
+# Lib_version      : V 4.0.1
+# Last Modified by : wad
+# DATE             : Mon Jan 14 08:44:21 UTC 2013
+# description      : New file name style
+#
+# Lib_version      : 4.0.0
+# Last Modified by : wad
+# DATE             : Thu Sep 13 11:45:54 UTC 2012
+# description      : add additional asymmetric via's for METTP
+#                  : change the technology codes
+#                  : this LEF file need PDK version XH018 - V 4.x.x
+#
+# Lib_version      : V 3.0.3
+# Last Modified by : wad
+# DATE             : Sep 12, 2012
+# description      : change wide metal spacing rule
+#
+# Lib_version      : V 3.0.2
+# Last Modified by : wad
+# DATE             : March 28, 2012 
+# description      : new BUSBITCHARS
+#
+#
+# Lib_version      : V 3.0.1
+# Last Modified by : wad
+# DATE             : Jan 25, 2012  
+# description      : new DfM vias
+#
+#************************************************/
+
+VERSION 5.7 ;
+DIVIDERCHAR "/" ;
+BUSBITCHARS "[]" ;
+
+UNITS
+    DATABASE MICRONS 1000 ;
+END UNITS
+MANUFACTURINGGRID    0.005 ;
+ 
+LAYER OVERLAP
+   TYPE  OVERLAP ;
+END OVERLAP
+
+LAYER LOCKED
+    TYPE MASTERSLICE ;
+END LOCKED
+
+LAYER LOCKED1
+    TYPE MASTERSLICE ;
+END LOCKED1
+
+LAYER LOCKED2
+    TYPE MASTERSLICE ;
+END LOCKED2
+
+LAYER LOCKED3
+    TYPE MASTERSLICE ;
+END LOCKED3
+
+LAYER LOCKED4
+    TYPE MASTERSLICE ;
+END LOCKED4
+
+LAYER POLY1
+    TYPE MASTERSLICE ;
+END POLY1
+
+LAYER MET1
+    TYPE ROUTING ;
+    WIDTH 0.23 ;
+    MAXWIDTH 35 ;
+    SPACING 0.23 ;
+    SPACING 0.6 RANGE 10.001 100 ;
+    SPACING 0.6 RANGE 10.001 100 INFLUENCE 1.6 ;
+    PITCH 0.560 ;
+    OFFSET 0.280 ;
+    AREA 0.202 ;
+    DIRECTION HORIZONTAL ;
+    CAPACITANCE CPERSQDIST 2.56e-05 ;
+    EDGECAPACITANCE 9.2e-06 ;
+    RESISTANCE RPERSQ 0.077 ;
+    THICKNESS 0.565 ;
+    ANTENNASIDEAREARATIO 380 ;
+    ANTENNADIFFAREARATIO 9999999 ;
+END MET1
+
+LAYER VIA1
+    TYPE CUT ;
+    SPACING 0.26 ;
+    WIDTH 0.26 ;
+    ENCLOSURE 0.01 0.06 ;
+    PREFERENCLOSURE 0.06 0.06 ;
+    RESISTANCE 4.5 ;
+    ANTENNAAREARATIO 20 ;
+END VIA1
+
+LAYER MET2
+    TYPE ROUTING ;
+    WIDTH 0.28 ;
+    MAXWIDTH 35 ;
+    SPACING 0.28 ;
+    SPACING 0.6 RANGE 10.001 100 ;
+    SPACING 0.6 RANGE 10.001 100 INFLUENCE 1.6 ;
+    PITCH 0.560 ;
+    OFFSET 0.280 ;
+    AREA 0.202 ;
+    WIREEXTENSION 0.19 ;
+    DIRECTION VERTICAL ;
+    CAPACITANCE CPERSQDIST 4.15e-05 ;
+    EDGECAPACITANCE 8.3e-06 ;
+    RESISTANCE RPERSQ 0.074 ;
+    THICKNESS 0.565 ;
+    ANTENNASIDEAREARATIO 380 ;
+    ANTENNADIFFAREARATIO 9999999 ;
+END MET2
+
+
+LAYER VIA2
+    TYPE CUT ;
+    SPACING 0.26 ;
+    WIDTH 0.26 ;
+    ENCLOSURE 0.01 0.06 ;
+    PREFERENCLOSURE 0.06 0.06 ;
+    RESISTANCE 4.5 ;
+    ANTENNAAREARATIO 20 ;
+END VIA2
+
+LAYER MET3
+    TYPE ROUTING ;
+    WIDTH 0.28 ;
+    MAXWIDTH 35 ;
+    SPACING 0.28 ;
+    SPACING 0.6 RANGE 10.001 100 ;
+    SPACING 0.6 RANGE 10.001 100 INFLUENCE 1.6 ;
+    PITCH 0.560 ;
+    OFFSET 0.280 ;
+    AREA 0.202 ;
+    WIREEXTENSION 0.19 ;
+    DIRECTION HORIZONTAL ;
+    CAPACITANCE CPERSQDIST 4.15e-05 ;
+    EDGECAPACITANCE 8.3e-06 ;
+    RESISTANCE RPERSQ 0.074 ;
+    THICKNESS 0.565 ;
+    ANTENNASIDEAREARATIO 380 ;
+    ANTENNADIFFAREARATIO 9999999 ;
+END MET3
+
+LAYER VIA3
+    TYPE CUT ;
+    SPACING 0.26 ;
+    WIDTH 0.26 ;
+    ENCLOSURE 0.01 0.06 ;
+    PREFERENCLOSURE 0.06 0.06 ;
+    RESISTANCE 4.5 ;
+    ANTENNAAREARATIO 20 ;
+END VIA3
+
+LAYER MET4
+    TYPE ROUTING ;
+    WIDTH 0.28 ;
+    MAXWIDTH 35 ;
+    SPACING 0.28 ;
+    SPACING 0.6 RANGE 10.001 100 ;
+    SPACING 0.6 RANGE 10.001 100 INFLUENCE 1.6 ;
+    PITCH 0.560 ;
+    OFFSET 0.280 ;
+    AREA 0.202 ;
+    WIREEXTENSION 0.19 ;
+    DIRECTION VERTICAL ;
+    CAPACITANCE CPERSQDIST 4.15e-05 ;
+    EDGECAPACITANCE 8.3e-06 ;
+    RESISTANCE RPERSQ 0.074 ;
+    THICKNESS 0.565 ;
+    ANTENNASIDEAREARATIO 380 ;
+    ANTENNADIFFAREARATIO 9999999 ;
+END MET4
+
+LAYER VIATP
+    TYPE CUT ;
+    SPACING 0.35 ;
+    WIDTH 0.36 ;
+    ENCLOSURE BELOW 0.01 0.06 ;
+    ENCLOSURE ABOVE 0.09 0.09 ;
+    PREFERENCLOSURE BELOW 0.06 0.06 ;
+    PREFERENCLOSURE ABOVE 0.09 0.09 ;
+    RESISTANCE 2 ;
+    ANTENNAAREARATIO 20 ;
+END VIATP
+
+LAYER METTP
+    TYPE ROUTING ;
+    WIDTH 0.44 ;
+    MAXWIDTH 35 ;
+    SPACING 0.46 ;
+    SPACING 0.6 RANGE 10.001 100 ;
+    SPACING 0.6 RANGE 10.001 100 INFLUENCE 1.6 ;
+    PITCH 1.120 ;
+    OFFSET 0.280 ;
+    AREA 0.562 ;
+    DIRECTION HORIZONTAL ;
+    CAPACITANCE CPERSQDIST 3.53e-05 ;
+    EDGECAPACITANCE 9.5e-06 ;
+    RESISTANCE RPERSQ 0.031 ;
+    THICKNESS 0.985 ;
+    ANTENNASIDEAREARATIO 380 ;
+    ANTENNADIFFAREARATIO 9999999 ;
+END METTP
+
+LAYER VIATPL
+    TYPE CUT ;
+    SPACING 0.45 ;
+    WIDTH 0.5 ;
+    ENCLOSURE 0.5 0.5 ;
+    RESISTANCE 1.2 ;
+    ANTENNAAREARATIO 20 ;
+END VIATPL
+
+LAYER METTPL
+    TYPE ROUTING ;
+    WIDTH 3 ;
+    MAXWIDTH 35 ;
+    SPACING 2.5 ;
+    PITCH 5.60 ;
+    OFFSET 2.80 ;
+    AREA 10 ;
+    DIRECTION VERTICAL ;
+    CAPACITANCE CPERSQDIST 3.57e-05 ;
+    EDGECAPACITANCE 3.11e-05 ;
+    RESISTANCE RPERSQ 0.0101 ;
+    THICKNESS 3.11 ;
+    ANTENNASIDEAREARATIO 190 ;
+    ANTENNADIFFAREARATIO 9999999 ;
+END METTPL
+
+#############
+
+VIA VIA1_X_so DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET1 ;
+        RECT -0.190 -0.140 0.190 0.140 ;
+    LAYER VIA1 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.140 0.140 0.140 ;
+END VIA1_X_so
+
+VIA VIA1_Y_so DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET1 ;
+        RECT -0.140 -0.190 0.140 0.190 ;
+    LAYER VIA1 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.140 0.140 0.140 ;
+END VIA1_Y_so
+
+VIA VIA1_X_eo DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET1 ;
+        RECT -0.190 -0.160 0.190 0.160 ;
+    LAYER VIA1 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+    LAYER MET2 ;
+        RECT -0.170 -0.160 0.170 0.160 ;
+END VIA1_X_eo
+
+VIA VIA1_Y_eo DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET1 ;
+        RECT -0.170 -0.190 0.170 0.190 ;
+    LAYER VIA1 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+    LAYER MET2 ;
+        RECT -0.170 -0.160 0.170 0.160 ;
+END VIA1_Y_eo
+
+VIA VIA1ne_beo DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET1 ;
+        RECT -0.140 -0.140 0.240 0.240 ;
+    LAYER VIA1 ;
+        RECT -0.080 -0.080 0.180 0.180 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.160 0.240 0.260 ;
+END VIA1ne_beo
+
+VIA VIA1nw_beo DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET1 ;
+        RECT -0.240 -0.140 0.140 0.240 ;
+    LAYER VIA1 ;
+        RECT -0.180 -0.080 0.080 0.180 ;
+    LAYER MET2 ;
+        RECT -0.240 -0.160 0.140 0.260 ;
+END VIA1nw_beo
+
+VIA VIA1se_beo DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET1 ;
+        RECT -0.140 -0.240 0.240 0.140 ;
+    LAYER VIA1 ;
+        RECT -0.080 -0.180 0.180 0.080 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.260 0.240 0.160 ;
+END VIA1se_beo
+
+VIA VIA1sw_beo DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET1 ;
+        RECT -0.240 -0.240 0.140 0.140 ;
+    LAYER VIA1 ;
+        RECT -0.180 -0.180 0.080 0.080 ;
+    LAYER MET2 ;
+        RECT -0.240 -0.260 0.140 0.160 ;
+END VIA1sw_beo
+
+#############
+
+VIA VIA1_CH1_so DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.190 -0.140 0.710 0.140 ;
+    LAYER VIA1 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+        RECT  0.390 -0.130 0.650 0.130 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.190 0.660 0.190 ;
+END VIA1_CH1_so
+
+VIA VIA1_CH1m2_eo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.190 -0.140 0.710 0.140 ;
+    LAYER VIA1 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+        RECT  0.390 -0.130 0.650 0.130 ;
+    LAYER MET2 ;
+        RECT -0.170 -0.190 0.710 0.190 ;
+END VIA1_CH1m2_eo
+
+VIA VIA1_CH1_eo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.140 -0.160 0.760 0.160 ;
+    LAYER VIA1 ;
+        RECT -0.080 -0.130 0.180 0.130 ;
+        RECT  0.440 -0.130 0.700 0.130 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.190 0.760 0.190 ;
+END VIA1_CH1_eo
+
+VIA VIA1_CH1n_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.140 -0.140 0.800 0.240 ;
+    LAYER VIA1 ;
+        RECT -0.060 -0.080 0.200 0.180 ;
+        RECT  0.460 -0.080 0.720 0.180 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.140 0.800 0.240 ;
+END VIA1_CH1n_beo
+
+VIA VIA1_CH1s_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.140 -0.240 0.800 0.140 ;
+    LAYER VIA1 ;
+        RECT -0.060 -0.180 0.200 0.080 ;
+        RECT  0.460 -0.180 0.720 0.080 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.240 0.800 0.140 ;
+END VIA1_CH1s_beo
+
+VIA VIA1_CH2_so DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.710 -0.140  0.190 0.140 ;
+    LAYER VIA1 ;
+        RECT -0.650 -0.130 -0.390 0.130 ;
+        RECT -0.130 -0.130  0.130 0.130 ;
+    LAYER MET2 ;
+        RECT -0.660 -0.190  0.140 0.190 ;
+END VIA1_CH2_so
+
+VIA VIA1_CH2m2_eo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.710 -0.140  0.190 0.140 ;
+    LAYER VIA1 ;
+        RECT -0.650 -0.130 -0.390 0.130 ;
+        RECT -0.130 -0.130  0.130 0.130 ;
+    LAYER MET2 ;
+        RECT -0.710 -0.190  0.170 0.190 ;
+END VIA1_CH2m2_eo
+
+VIA VIA1_CH2_eo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.760 -0.160  0.140 0.160 ;
+    LAYER VIA1 ;
+        RECT -0.700 -0.130 -0.440 0.130 ;
+        RECT -0.180 -0.130  0.080 0.130 ;
+    LAYER MET2 ;
+        RECT -0.760 -0.190  0.140 0.190 ;
+END VIA1_CH2_eo
+
+VIA VIA1_CH2n_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.800 -0.140  0.140 0.240 ;
+    LAYER VIA1 ;
+        RECT -0.720 -0.080 -0.460 0.180 ;
+        RECT -0.200 -0.080  0.060 0.180 ;
+    LAYER MET2 ;
+        RECT -0.800 -0.140  0.140 0.240 ;
+END VIA1_CH2n_beo
+
+VIA VIA1_CH2s_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.800 -0.240  0.140 0.140 ;
+    LAYER VIA1 ;
+        RECT -0.720 -0.180 -0.460 0.080 ;
+        RECT -0.200 -0.180  0.060 0.080 ;
+    LAYER MET2 ;
+        RECT -0.800 -0.240  0.140 0.140 ;
+END VIA1_CH2s_beo
+
+VIA VIA1_CV1_so DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.190 -0.660 0.190  0.140 ;
+    LAYER VIA1 ;
+        RECT -0.130 -0.130 0.130  0.130 ;
+        RECT -0.130 -0.650 0.130 -0.390 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.710 0.140  0.190 ;
+END VIA1_CV1_so
+
+VIA VIA1_CV1m2_eo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.190 -0.660 0.190  0.140 ;
+    LAYER VIA1 ;
+        RECT -0.130 -0.130 0.130  0.130 ;
+        RECT -0.130 -0.650 0.130 -0.390 ;
+    LAYER MET2 ;
+        RECT -0.170 -0.710 0.170  0.190 ;
+END VIA1_CV1m2_eo
+
+VIA VIA1_CV1_eo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.190 -0.760 0.190  0.140 ;
+    LAYER VIA1 ;
+        RECT -0.130 -0.180 0.130  0.080 ;
+        RECT -0.130 -0.700 0.130 -0.440 ;
+    LAYER MET2 ;
+        RECT -0.170 -0.760 0.170  0.140 ;
+END VIA1_CV1_eo
+
+VIA VIA1_CV1e_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.140 -0.780 0.240  0.160 ;
+    LAYER VIA1 ;
+        RECT -0.080 -0.180 0.180  0.080 ;
+        RECT -0.080 -0.700 0.180 -0.440 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.780 0.240  0.160 ;
+END VIA1_CV1e_beo
+
+VIA VIA1_CV1w_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.240 -0.780 0.140  0.160 ;
+    LAYER VIA1 ;
+        RECT -0.180 -0.180 0.080  0.080 ;
+        RECT -0.180 -0.700 0.080 -0.440 ;
+    LAYER MET2 ;
+        RECT -0.240 -0.780 0.140  0.160 ;
+END VIA1_CV1w_beo
+
+VIA VIA1_CV2_so DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.190 -0.140 0.190 0.660 ;
+    LAYER VIA1 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+        RECT -0.130  0.390 0.130 0.650 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.190 0.140 0.710 ;
+END VIA1_CV2_so
+
+VIA VIA1_CV2m2_eo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.190 -0.140 0.190 0.660 ;
+    LAYER VIA1 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+        RECT -0.130  0.390 0.130 0.650 ;
+    LAYER MET2 ;
+        RECT -0.170 -0.190 0.170 0.710 ;
+END VIA1_CV2m2_eo
+
+VIA VIA1_CV2_eo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.190 -0.140 0.190 0.760 ;
+    LAYER VIA1 ;
+        RECT -0.130 -0.080 0.130 0.180 ;
+        RECT -0.130  0.440 0.130 0.700 ;
+    LAYER MET2 ;
+        RECT -0.170 -0.140 0.170 0.760 ;
+END VIA1_CV2_eo
+
+VIA VIA1_CV2e_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.140 -0.160 0.240 0.780 ;
+    LAYER VIA1 ;
+        RECT -0.080 -0.080 0.180 0.180 ;
+        RECT -0.080  0.440 0.180 0.700 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.160 0.240 0.780 ;
+END VIA1_CV2e_beo
+
+VIA VIA1_CV2w_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.240 -0.160 0.140 0.780 ;
+    LAYER VIA1 ;
+        RECT -0.180 -0.080 0.080 0.180 ;
+        RECT -0.180  0.440 0.080 0.700 ;
+    LAYER MET2 ;
+        RECT -0.240 -0.160 0.140 0.780 ;
+END VIA1_CV2w_beo
+
+#############
+
+VIA VIA1_o DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET1 ;
+        RECT -0.190 -0.140 0.190 0.140 ;
+    LAYER VIA1 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.190 0.140 0.190 ;
+END VIA1_o
+
+VIA VIA1_CH1_hd DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.170 -0.140 0.730 0.140 ;
+    LAYER VIA1 ;
+        RECT -0.110 -0.130 0.150 0.130 ;
+        RECT  0.410 -0.130 0.670 0.130 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.190 0.700 0.190 ;
+END VIA1_CH1_hd
+
+VIA VIA1_CH2_hd DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.730 -0.140  0.170 0.140 ;
+    LAYER VIA1 ;
+        RECT -0.670 -0.130 -0.410 0.130 ;
+        RECT -0.150 -0.130  0.110 0.130 ;
+    LAYER MET2 ;
+        RECT -0.700 -0.190  0.140 0.190 ;
+END VIA1_CH2_hd
+
+VIA VIA1_CV1_hd DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.140 -0.730 0.140  0.170 ;
+    LAYER VIA1 ;
+        RECT -0.130 -0.150 0.130  0.110 ;
+        RECT -0.130 -0.670 0.130 -0.410 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.730 0.140  0.170 ;
+END VIA1_CV1_hd
+
+VIA VIA1_CV2_hd DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.140 -0.170 0.140 0.730 ;
+    LAYER VIA1 ;
+        RECT -0.130 -0.110 0.130 0.150 ;
+        RECT -0.130  0.410 0.130 0.670 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.170 0.140 0.730 ;
+END VIA1_CV2_hd
+
+VIA VIA1_CH1_so2 DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.140 -0.190 0.660 0.190 ;
+    LAYER VIA1 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+        RECT  0.390 -0.130 0.650 0.130 ;
+    LAYER MET2 ;
+        RECT -0.190 -0.140 0.710 0.140 ;
+END VIA1_CH1_so2
+
+VIA VIA1_CH2_so2 DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.660 -0.190  0.140 0.190 ;
+    LAYER VIA1 ;
+        RECT -0.650 -0.130 -0.390 0.130 ;
+        RECT -0.130 -0.130  0.130 0.130 ;
+    LAYER MET2 ;
+        RECT -0.710 -0.140  0.190 0.140 ;
+END VIA1_CH2_so2
+
+VIA VIA1_CH1_so_hd2 DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.140 -0.190 0.660 0.190 ;
+    LAYER VIA1 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+        RECT  0.390 -0.130 0.650 0.130 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.190 0.660 0.190 ;
+END VIA1_CH1_so_hd2
+
+VIA VIA1_CH2_so_hd2 DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET1 ;
+        RECT -0.660 -0.190  0.140 0.190 ;
+    LAYER VIA1 ;
+        RECT -0.650 -0.130 -0.390 0.130 ;
+        RECT -0.130 -0.130  0.130 0.130 ;
+    LAYER MET2 ;
+        RECT -0.660 -0.190  0.140 0.190 ;
+END VIA1_CH2_so_hd2
+
+#############
+VIA VIA2_so DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.140 0.140 0.140 ;
+    LAYER VIA2 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.140 0.140 0.140 ;
+END VIA2_so
+
+VIA VIA2_eo DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET2 ;
+        RECT -0.170 -0.160 0.170 0.160 ;
+    LAYER VIA2 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+    LAYER MET3 ;
+        RECT -0.170 -0.160 0.170 0.160 ;
+END VIA2_eo
+
+VIA VIA2_beo DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET2 ;
+        RECT -0.190 -0.210 0.190 0.210 ;
+    LAYER VIA2 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+    LAYER MET3 ;
+        RECT -0.210 -0.190 0.210 0.190 ;
+END VIA2_beo
+
+VIA VIA2ne_beo DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.160 0.240 0.260 ;
+    LAYER VIA2 ;
+        RECT -0.080 -0.080 0.180 0.180 ;
+    LAYER MET3 ;
+        RECT -0.160 -0.140 0.260 0.240 ;
+END VIA2ne_beo
+
+VIA VIA2nw_beo DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET2 ;
+        RECT -0.240 -0.160 0.140 0.260 ;
+    LAYER VIA2 ;
+        RECT -0.180 -0.080 0.080 0.180 ;
+    LAYER MET3 ;
+        RECT -0.260 -0.140 0.160 0.240 ;
+END VIA2nw_beo
+
+VIA VIA2se_beo DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.260 0.240 0.160 ;
+    LAYER VIA2 ;
+        RECT -0.080 -0.180 0.180 0.080 ;
+    LAYER MET3 ;
+        RECT -0.160 -0.240 0.260 0.140 ;
+END VIA2se_beo
+
+VIA VIA2sw_beo DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET2 ;
+        RECT -0.240 -0.260 0.140 0.160 ;
+    LAYER VIA2 ;
+        RECT -0.180 -0.180 0.080 0.080 ;
+    LAYER MET3 ;
+        RECT -0.260 -0.240 0.160 0.140 ;
+END VIA2sw_beo
+
+VIA VIA2_north_TOS_so DEFAULT 
+    RESISTANCE 4.5 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.190 0.140 0.535 ;
+    LAYER VIA2 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.140 0.140 0.140 ;
+END VIA2_north_TOS_so
+
+VIA VIA2_south_TOS_so DEFAULT 
+    RESISTANCE 4.5 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.535 0.140 0.190 ;
+    LAYER VIA2 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.140 0.140 0.140 ;
+END VIA2_south_TOS_so
+
+VIA VIA2_north_TOS_eo DEFAULT 
+    RESISTANCE 4.5 ;
+    LAYER MET2 ;
+        RECT -0.170 -0.190 0.170 0.410 ;
+    LAYER VIA2 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+    LAYER MET3 ;
+        RECT -0.170 -0.160 0.170 0.160 ;
+END VIA2_north_TOS_eo
+
+VIA VIA2_south_TOS_eo DEFAULT 
+    RESISTANCE 4.5 ;
+    LAYER MET2 ;
+        RECT -0.170 -0.410 0.170 0.190 ;
+    LAYER VIA2 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+    LAYER MET3 ;
+        RECT -0.170 -0.160 0.170 0.160 ;
+END VIA2_south_TOS_eo
+
+VIA VIA2_ne_TOS_beo DEFAULT 
+    RESISTANCE 4.5 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.140 0.240 0.400 ;
+    LAYER VIA2 ;
+        RECT -0.080 -0.080 0.180 0.180 ;
+    LAYER MET3 ;
+        RECT -0.160 -0.140 0.260 0.240 ;
+END VIA2_ne_TOS_beo
+
+VIA VIA2_nw_TOS_beo DEFAULT 
+    RESISTANCE 4.5 ;
+    LAYER MET2 ;
+        RECT -0.240 -0.140 0.140 0.400 ;
+    LAYER VIA2 ;
+        RECT -0.180 -0.080 0.080 0.180 ;
+    LAYER MET3 ;
+        RECT -0.260 -0.140 0.160 0.240 ;
+END VIA2_nw_TOS_beo
+
+VIA VIA2_se_TOS_beo DEFAULT 
+    RESISTANCE 4.5 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.400 0.240 0.140 ;
+    LAYER VIA2 ;
+        RECT -0.080 -0.180 0.180 0.080 ;
+    LAYER MET3 ;
+        RECT -0.160 -0.240 0.260 0.140 ;
+END VIA2_se_TOS_beo
+
+VIA VIA2_sw_TOS_beo DEFAULT 
+    RESISTANCE 4.5 ;
+    LAYER MET2 ;
+        RECT -0.240 -0.400 0.140 0.140 ;
+    LAYER VIA2 ;
+        RECT -0.180 -0.180 0.080 0.080 ;
+    LAYER MET3 ;
+        RECT -0.260 -0.240 0.160 0.140 ;
+END VIA2_sw_TOS_beo
+
+#############
+
+VIA VIA2_CH1_so DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.190 -0.140 0.710 0.140 ;
+    LAYER VIA2 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+        RECT  0.390 -0.130 0.650 0.130 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.190 0.660 0.190 ;
+END VIA2_CH1_so
+
+VIA VIA2_CH1_eo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.160 0.760 0.160 ;
+    LAYER VIA2 ;
+        RECT -0.080 -0.130 0.180 0.130 ;
+        RECT  0.440 -0.130 0.700 0.130 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.190 0.760 0.190 ;
+END VIA2_CH1_eo
+
+VIA VIA2_CH1n_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.140 0.800 0.240 ;
+    LAYER VIA2 ;
+        RECT -0.060 -0.080 0.200 0.180 ;
+        RECT  0.460 -0.080 0.720 0.180 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.140 0.800 0.240 ;
+END VIA2_CH1n_beo
+
+VIA VIA2_CH1s_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.240 0.800 0.140 ;
+    LAYER VIA2 ;
+        RECT -0.060 -0.180 0.200 0.080 ;
+        RECT  0.460 -0.180 0.720 0.080 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.240 0.800 0.140 ;
+END VIA2_CH1s_beo
+
+VIA VIA2_CH2_so DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.710 -0.140  0.190 0.140 ;
+    LAYER VIA2 ;
+        RECT -0.650 -0.130 -0.390 0.130 ;
+        RECT -0.130 -0.130  0.130 0.130 ;
+    LAYER MET2 ;
+        RECT -0.660 -0.190  0.140 0.190 ;
+END VIA2_CH2_so
+
+VIA VIA2_CH2_eo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.760 -0.160  0.140 0.160 ;
+    LAYER VIA2 ;
+        RECT -0.700 -0.130 -0.440 0.130 ;
+        RECT -0.180 -0.130  0.080 0.130 ;
+    LAYER MET2 ;
+        RECT -0.760 -0.190  0.140 0.190 ;
+END VIA2_CH2_eo
+
+VIA VIA2_CH2n_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.800 -0.140  0.140 0.240 ;
+    LAYER VIA2 ;
+        RECT -0.720 -0.080 -0.460 0.180 ;
+        RECT -0.200 -0.080  0.060 0.180 ;
+    LAYER MET2 ;
+        RECT -0.800 -0.140  0.140 0.240 ;
+END VIA2_CH2n_beo
+
+VIA VIA2_CH2s_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.800 -0.240  0.140 0.140 ;
+    LAYER VIA2 ;
+        RECT -0.720 -0.180 -0.460 0.080 ;
+        RECT -0.200 -0.180  0.060 0.080 ;
+    LAYER MET2 ;
+        RECT -0.800 -0.240  0.140 0.140 ;
+END VIA2_CH2s_beo
+
+VIA VIA2_CV1_so DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.190 -0.660 0.190  0.140 ;
+    LAYER VIA2 ;
+        RECT -0.130 -0.130 0.130  0.130 ;
+        RECT -0.130 -0.650 0.130 -0.390 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.710 0.140  0.190 ;
+END VIA2_CV1_so
+
+VIA VIA2_CV1_eo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.190 -0.760 0.190  0.140 ;
+    LAYER VIA2 ;
+        RECT -0.130 -0.180 0.130  0.080 ;
+        RECT -0.130 -0.700 0.130 -0.440 ;
+    LAYER MET2 ;
+        RECT -0.170 -0.760 0.170  0.140 ;
+END VIA2_CV1_eo
+
+VIA VIA2_CV1e_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.780 0.240  0.160 ;
+    LAYER VIA2 ;
+        RECT -0.080 -0.180 0.180  0.080 ;
+        RECT -0.080 -0.700 0.180 -0.440 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.780 0.240  0.160 ;
+END VIA2_CV1e_beo
+
+VIA VIA2_CV1w_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.240 -0.780 0.140  0.160 ;
+    LAYER VIA2 ;
+        RECT -0.180 -0.180 0.080  0.080 ;
+        RECT -0.180 -0.700 0.080 -0.440 ;
+    LAYER MET2 ;
+        RECT -0.240 -0.780 0.140  0.160 ;
+END VIA2_CV1w_beo
+
+VIA VIA2_CV2_so DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.190 -0.140 0.190 0.660 ;
+    LAYER VIA2 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+        RECT -0.130  0.390 0.130 0.650 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.190 0.140 0.710 ;
+END VIA2_CV2_so
+
+VIA VIA2_CV2_eo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.190 -0.140 0.190 0.760 ;
+    LAYER VIA2 ;
+        RECT -0.130 -0.080 0.130 0.180 ;
+        RECT -0.130  0.440 0.130 0.700 ;
+    LAYER MET2 ;
+        RECT -0.170 -0.140 0.170 0.760 ;
+END VIA2_CV2_eo
+
+VIA VIA2_CV2e_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.160 0.240 0.780 ;
+    LAYER VIA2 ;
+        RECT -0.080 -0.080 0.180 0.180 ;
+        RECT -0.080  0.440 0.180 0.700 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.160 0.240 0.780 ;
+END VIA2_CV2e_beo
+
+VIA VIA2_CV2w_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.240 -0.160 0.140 0.780 ;
+    LAYER VIA2 ;
+        RECT -0.180 -0.080 0.080 0.180 ;
+        RECT -0.180  0.440 0.080 0.700 ;
+    LAYER MET2 ;
+        RECT -0.240 -0.160 0.140 0.780 ;
+END VIA2_CV2w_beo
+
+#############
+
+VIA VIA2_o DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.190 0.140 0.190 ;
+    LAYER VIA2 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+    LAYER MET3 ;
+        RECT -0.190 -0.140 0.190 0.140 ;
+END VIA2_o
+
+VIA VIA2_CH1_hd DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.140 0.760 0.140 ;
+    LAYER VIA2 ;
+        RECT -0.080 -0.130 0.180 0.130 ;
+        RECT  0.440 -0.130 0.700 0.130 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.140 0.760 0.140 ;
+END VIA2_CH1_hd
+
+VIA VIA2_CH2_hd DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.760 -0.140  0.140 0.140 ;
+    LAYER VIA2 ;
+        RECT -0.700 -0.130 -0.440 0.130 ;
+        RECT -0.180 -0.130  0.080 0.130 ;
+    LAYER MET2 ;
+        RECT -0.760 -0.140  0.140 0.140 ;
+END VIA2_CH2_hd
+
+VIA VIA2_CV1_hd DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.760 0.140  0.140 ;
+    LAYER VIA2 ;
+        RECT -0.130 -0.180 0.130  0.080 ;
+        RECT -0.130 -0.700 0.130 -0.440 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.760 0.140  0.140 ;
+END VIA2_CV1_hd
+
+VIA VIA2_CV2_hd DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.140 0.140 0.760 ;
+    LAYER VIA2 ;
+        RECT -0.130 -0.080 0.130 0.180 ;
+        RECT -0.130  0.440 0.130 0.700 ;
+    LAYER MET2 ;
+        RECT -0.140 -0.140 0.140 0.760 ;
+END VIA2_CV2_hd
+
+#############
+VIA VIA3_so DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.140 0.140 0.140 ;
+    LAYER VIA3 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.140 0.140 0.140 ;
+END VIA3_so
+
+VIA VIA3_eo DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET3 ;
+        RECT -0.170 -0.160 0.170 0.160 ;
+    LAYER VIA3 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+    LAYER MET4 ;
+        RECT -0.170 -0.160 0.170 0.160 ;
+END VIA3_eo
+
+VIA VIA3_beo DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET3 ;
+        RECT -0.210 -0.190 0.210 0.190 ;
+    LAYER VIA3 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+    LAYER MET4 ;
+        RECT -0.190 -0.210 0.190 0.210 ;
+END VIA3_beo
+
+VIA VIA3ne_beo DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET3 ;
+        RECT -0.160 -0.140 0.260 0.240 ;
+    LAYER VIA3 ;
+        RECT -0.080 -0.080 0.180 0.180 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.160 0.240 0.260 ;
+END VIA3ne_beo
+
+VIA VIA3nw_beo DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET3 ;
+        RECT -0.260 -0.140 0.160 0.240 ;
+    LAYER VIA3 ;
+        RECT -0.180 -0.080 0.080 0.180 ;
+    LAYER MET4 ;
+        RECT -0.240 -0.160 0.140 0.260 ;
+END VIA3nw_beo
+
+VIA VIA3se_beo DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET3 ;
+        RECT -0.160 -0.240 0.260 0.140 ;
+    LAYER VIA3 ;
+        RECT -0.080 -0.180 0.180 0.080 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.260 0.240 0.160 ;
+END VIA3se_beo
+
+VIA VIA3sw_beo DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET3 ;
+        RECT -0.260 -0.240 0.160 0.140 ;
+    LAYER VIA3 ;
+        RECT -0.180 -0.180 0.080 0.080 ;
+    LAYER MET4 ;
+        RECT -0.240 -0.260 0.140 0.160 ;
+END VIA3sw_beo
+
+VIA VIA3_east_TOS_so DEFAULT 
+    RESISTANCE 4.5 ;
+    LAYER MET3 ;
+        RECT -0.190 -0.140 0.535 0.140 ;
+    LAYER VIA3 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.140 0.140 0.140 ;
+END VIA3_east_TOS_so
+
+VIA VIA3_west_TOS_so DEFAULT 
+    RESISTANCE 4.5 ;
+    LAYER MET3 ;
+        RECT -0.535 -0.140 0.190 0.140 ;
+    LAYER VIA3 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.140 0.140 0.140 ;
+END VIA3_west_TOS_so
+
+VIA VIA3_east_TOS_eo DEFAULT 
+    RESISTANCE 4.5 ;
+    LAYER MET3 ;
+        RECT -0.190 -0.160 0.450 0.160 ;
+    LAYER VIA3 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+    LAYER MET4 ;
+        RECT -0.170 -0.160 0.170 0.160 ;
+END VIA3_east_TOS_eo
+
+VIA VIA3_west_TOS_eo DEFAULT 
+    RESISTANCE 4.5 ;
+    LAYER MET3 ;
+        RECT -0.450 -0.160 0.190 0.160 ;
+    LAYER VIA3 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+    LAYER MET4 ;
+        RECT -0.170 -0.160 0.170 0.160 ;
+END VIA3_west_TOS_eo
+
+VIA VIA3_ne_TOS_beo DEFAULT 
+    RESISTANCE 4.5 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.140 0.400 0.240 ;
+    LAYER VIA3 ;
+        RECT -0.080 -0.080 0.180 0.180 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.160 0.240 0.260 ;
+END VIA3_ne_TOS_beo
+
+VIA VIA3_nw_TOS_beo DEFAULT 
+    RESISTANCE 4.5 ;
+    LAYER MET3 ;
+        RECT -0.400 -0.140 0.140 0.240 ;
+    LAYER VIA3 ;
+        RECT -0.180 -0.080 0.080 0.180 ;
+    LAYER MET4 ;
+        RECT -0.240 -0.160 0.140 0.260 ;
+END VIA3_nw_TOS_beo
+
+VIA VIA3_se_TOS_beo DEFAULT 
+    RESISTANCE 4.5 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.140 0.400 0.240 ;
+    LAYER VIA3 ;
+        RECT -0.080 -0.080 0.180 0.180 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.160 0.240 0.260 ;
+END VIA3_se_TOS_beo
+
+VIA VIA3_sw_TOS_beo DEFAULT 
+    RESISTANCE 4.5 ;
+    LAYER MET3 ;
+        RECT -0.400 -0.240 0.140 0.140 ;
+    LAYER VIA3 ;
+        RECT -0.180 -0.180 0.080 0.080 ;
+    LAYER MET4 ;
+        RECT -0.240 -0.260 0.140 0.160 ;
+END VIA3_sw_TOS_beo
+
+#############
+
+VIA VIA3_CH1_so DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.190 -0.140 0.710 0.140 ;
+    LAYER VIA3 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+        RECT  0.390 -0.130 0.650 0.130 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.190 0.660 0.190 ;
+END VIA3_CH1_so
+
+VIA VIA3_CH1_eo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.160 0.760 0.160 ;
+    LAYER VIA3 ;
+        RECT -0.080 -0.130 0.180 0.130 ;
+        RECT  0.440 -0.130 0.700 0.130 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.190 0.760 0.190 ;
+END VIA3_CH1_eo
+
+VIA VIA3_CH1n_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.140 0.800 0.240 ;
+    LAYER VIA3 ;
+        RECT -0.060 -0.080 0.200 0.180 ;
+        RECT  0.460 -0.080 0.720 0.180 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.140 0.800 0.240 ;
+END VIA3_CH1n_beo
+
+VIA VIA3_CH1s_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.240 0.800 0.140 ;
+    LAYER VIA3 ;
+        RECT -0.060 -0.180 0.200 0.080 ;
+        RECT  0.460 -0.180 0.720 0.080 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.240 0.800 0.140 ;
+END VIA3_CH1s_beo
+
+VIA VIA3_CH2_so DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.710 -0.140  0.190 0.140 ;
+    LAYER VIA3 ;
+        RECT -0.650 -0.130 -0.390 0.130 ;
+        RECT -0.130 -0.130  0.130 0.130 ;
+    LAYER MET4 ;
+        RECT -0.660 -0.190  0.140 0.190 ;
+END VIA3_CH2_so
+
+VIA VIA3_CH2_eo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.760 -0.160  0.140 0.160 ;
+    LAYER VIA3 ;
+        RECT -0.700 -0.130 -0.440 0.130 ;
+        RECT -0.180 -0.130  0.080 0.130 ;
+    LAYER MET4 ;
+        RECT -0.760 -0.190  0.140 0.190 ;
+END VIA3_CH2_eo
+
+VIA VIA3_CH2n_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.800 -0.140  0.140 0.240 ;
+    LAYER VIA3 ;
+        RECT -0.720 -0.080 -0.460 0.180 ;
+        RECT -0.200 -0.080  0.060 0.180 ;
+    LAYER MET4 ;
+        RECT -0.800 -0.140  0.140 0.240 ;
+END VIA3_CH2n_beo
+
+VIA VIA3_CH2s_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.800 -0.240  0.140 0.140 ;
+    LAYER VIA3 ;
+        RECT -0.720 -0.180 -0.460 0.080 ;
+        RECT -0.200 -0.180  0.060 0.080 ;
+    LAYER MET4 ;
+        RECT -0.800 -0.240  0.140 0.140 ;
+END VIA3_CH2s_beo
+
+VIA VIA3_CV1_so DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.190 -0.660 0.190  0.140 ;
+    LAYER VIA3 ;
+        RECT -0.130 -0.130 0.130  0.130 ;
+        RECT -0.130 -0.650 0.130 -0.390 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.710 0.140  0.190 ;
+END VIA3_CV1_so
+
+VIA VIA3_CV1_eo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.190 -0.760 0.190  0.140 ;
+    LAYER VIA3 ;
+        RECT -0.130 -0.180 0.130  0.080 ;
+        RECT -0.130 -0.700 0.130 -0.440 ;
+    LAYER MET4 ;
+        RECT -0.170 -0.760 0.170  0.140 ;
+END VIA3_CV1_eo
+
+VIA VIA3_CV1e_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.780 0.240  0.160 ;
+    LAYER VIA3 ;
+        RECT -0.080 -0.180 0.180  0.080 ;
+        RECT -0.080 -0.700 0.180 -0.440 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.780 0.240  0.160 ;
+END VIA3_CV1e_beo
+
+VIA VIA3_CV1w_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.240 -0.780 0.140  0.160 ;
+    LAYER VIA3 ;
+        RECT -0.180 -0.180 0.080  0.080 ;
+        RECT -0.180 -0.700 0.080 -0.440 ;
+    LAYER MET4 ;
+        RECT -0.240 -0.780 0.140  0.160 ;
+END VIA3_CV1w_beo
+
+VIA VIA3_CV2_so DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.190 -0.140 0.190 0.660 ;
+    LAYER VIA3 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+        RECT -0.130  0.390 0.130 0.650 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.190 0.140 0.710 ;
+END VIA3_CV2_so
+
+VIA VIA3_CV2_eo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.190 -0.140 0.190 0.760 ;
+    LAYER VIA3 ;
+        RECT -0.130 -0.080 0.130 0.180 ;
+        RECT -0.130  0.440 0.130 0.700 ;
+    LAYER MET4 ;
+        RECT -0.170 -0.140 0.170 0.760 ;
+END VIA3_CV2_eo
+
+VIA VIA3_CV2e_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.160 0.240 0.780 ;
+    LAYER VIA3 ;
+        RECT -0.080 -0.080 0.180 0.180 ;
+        RECT -0.080  0.440 0.180 0.700 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.160 0.240 0.780 ;
+END VIA3_CV2e_beo
+
+VIA VIA3_CV2w_beo DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.240 -0.160 0.140 0.780 ;
+    LAYER VIA3 ;
+        RECT -0.180 -0.080 0.080 0.180 ;
+        RECT -0.180  0.440 0.080 0.700 ;
+    LAYER MET4 ;
+        RECT -0.240 -0.160 0.140 0.780 ;
+END VIA3_CV2w_beo
+
+#############
+
+VIA VIA3_o DEFAULT
+    RESISTANCE 4.5 ;
+    LAYER MET3 ;
+        RECT -0.190 -0.140 0.190 0.140 ;
+    LAYER VIA3 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.190 0.140 0.190 ;
+END VIA3_o
+
+VIA VIA3_CH1_hd DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.140 0.760 0.140 ;
+    LAYER VIA3 ;
+        RECT -0.080 -0.130 0.180 0.130 ;
+        RECT  0.440 -0.130 0.700 0.130 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.140 0.760 0.140 ;
+END VIA3_CH1_hd
+
+VIA VIA3_CH2_hd DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.760 -0.140  0.140 0.140 ;
+    LAYER VIA3 ;
+        RECT -0.700 -0.130 -0.440 0.130 ;
+        RECT -0.180 -0.130  0.080 0.130 ;
+    LAYER MET4 ;
+        RECT -0.760 -0.140  0.140 0.140 ;
+END VIA3_CH2_hd
+
+VIA VIA3_CV1_hd DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.760 0.140  0.140 ;
+    LAYER VIA3 ;
+        RECT -0.130 -0.180 0.130  0.080 ;
+        RECT -0.130 -0.700 0.130 -0.440 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.760 0.140  0.140 ;
+END VIA3_CV1_hd
+
+VIA VIA3_CV2_hd DEFAULT
+    RESISTANCE 2.25 ;
+    LAYER MET3 ;
+        RECT -0.140 -0.140 0.140 0.760 ;
+    LAYER VIA3 ;
+        RECT -0.130 -0.080 0.130 0.180 ;
+        RECT -0.130  0.440 0.130 0.700 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.140 0.140 0.760 ;
+END VIA3_CV2_hd
+
+#############
+VIA VIATP_beo DEFAULT
+    RESISTANCE 2.0 ;
+    LAYER MET4 ;
+        RECT -0.270 -0.240 0.270 0.240 ;
+    LAYER VIATP ;
+        RECT -0.180 -0.180 0.180 0.180 ;
+    LAYER METTP ;
+        RECT -0.300 -0.300 0.300 0.300 ;
+END VIATP_beo
+
+VIA VIATPne_beo DEFAULT
+    RESISTANCE 2.0 ;
+    LAYER MET4 ;
+        RECT -0.170 -0.160 0.370 0.320 ;
+    LAYER VIATP ;
+        RECT -0.080 -0.100 0.280 0.260 ;
+    LAYER METTP ;
+        RECT -0.200 -0.220 0.400 0.380 ;
+END VIATPne_beo
+
+VIA VIATPnw_beo DEFAULT
+    RESISTANCE 2.0 ;
+    LAYER MET4 ;
+        RECT -0.370 -0.160 0.170 0.320 ;
+    LAYER VIATP ;
+        RECT -0.280 -0.100 0.080 0.260 ;
+    LAYER METTP ;
+        RECT -0.400 -0.220 0.200 0.380 ;
+END VIATPnw_beo
+
+VIA VIATPse_beo DEFAULT
+    RESISTANCE 2.0 ;
+    LAYER MET4 ;
+        RECT -0.170 -0.320 0.370 0.160 ;
+    LAYER VIATP ;
+        RECT -0.080 -0.260 0.280 0.100 ;
+    LAYER METTP ;
+        RECT -0.200 -0.380 0.400 0.220 ;
+END VIATPse_beo
+
+VIA VIATPsw_beo DEFAULT
+    RESISTANCE 2.0 ;
+    LAYER MET4 ;
+        RECT -0.370 -0.320 0.170 0.160 ;
+    LAYER VIATP ;
+        RECT -0.280 -0.260 0.080 0.100 ;
+    LAYER METTP ;
+        RECT -0.400 -0.380 0.200 0.220 ;
+END VIATPsw_beo
+
+VIA VIATP_X_so DEFAULT
+    RESISTANCE 2.0 ;
+    LAYER MET4 ;
+        RECT -0.240 -0.190 0.240 0.190 ;
+    LAYER VIATP ;
+        RECT -0.180 -0.180 0.180 0.180 ;
+    LAYER METTP ;
+        RECT -0.270 -0.270 0.270 0.270 ;
+END VIATP_X_so
+
+VIA VIATP_Y_so DEFAULT
+    RESISTANCE 2.0 ;
+    LAYER MET4 ;
+        RECT -0.190 -0.240 0.190 0.240 ;
+    LAYER VIATP ;
+        RECT -0.180 -0.180 0.180 0.180 ;
+    LAYER METTP ;
+        RECT -0.270 -0.270 0.270 0.270 ;
+END VIATP_Y_so
+
+VIA VIATPne_Y_so DEFAULT
+    RESISTANCE 2.0 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.190 0.240 0.290 ;
+    LAYER VIATP ;
+        RECT -0.130 -0.130 0.230 0.230 ;
+    LAYER METTP ;
+        RECT -0.220 -0.220 0.320 0.320 ;
+END VIATPne_Y_so
+
+VIA VIATPnw_Y_so DEFAULT
+    RESISTANCE 2.0 ;
+    LAYER MET4 ;
+        RECT -0.240 -0.190 0.140 0.290 ;
+    LAYER VIATP ;
+        RECT -0.230 -0.130 0.130 0.230 ;
+    LAYER METTP ;
+        RECT -0.320 -0.220 0.220 0.320 ;
+END VIATPnw_Y_so
+
+VIA VIATPne_X_so DEFAULT
+    RESISTANCE 2.0 ;
+    LAYER MET4 ;
+        RECT -0.190 -0.140 0.290 0.240 ;
+    LAYER VIATP ;
+        RECT -0.130 -0.130 0.230 0.230 ;
+    LAYER METTP ;
+        RECT -0.220 -0.220 0.320 0.320 ;
+END VIATPne_X_so
+
+VIA VIATPnw_X_so DEFAULT
+    RESISTANCE 2.0 ;
+    LAYER MET4 ;
+        RECT -0.290 -0.140 0.190 0.240 ;
+    LAYER VIATP ;
+        RECT -0.230 -0.130 0.130 0.230 ;
+    LAYER METTP ;
+        RECT -0.320 -0.220 0.220 0.320 ;
+END VIATPnw_X_so
+
+VIA VIATPse_X_so DEFAULT
+    RESISTANCE 2.0 ;
+    LAYER MET4 ;
+        RECT -0.190 -0.240 0.290 0.140 ;
+    LAYER VIATP ;
+        RECT -0.130 -0.230 0.230 0.130 ;
+    LAYER METTP ;
+        RECT -0.220 -0.320 0.320 0.220 ;
+END VIATPse_X_so
+
+VIA VIATPsw_X_so DEFAULT
+    RESISTANCE 2.0 ;
+    LAYER MET4 ;
+        RECT -0.290 -0.240 0.190 0.140 ;
+    LAYER VIATP ;
+        RECT -0.230 -0.230 0.130 0.130 ;
+    LAYER METTP ;
+        RECT -0.320 -0.320 0.220 0.220 ;
+END VIATPsw_X_so
+
+VIA VIATPse_Y_so DEFAULT
+    RESISTANCE 2.0 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.290 0.240 0.190 ;
+    LAYER VIATP ;
+        RECT -0.130 -0.230 0.230 0.130 ;
+    LAYER METTP ;
+        RECT -0.220 -0.320 0.320 0.220 ;
+END VIATPse_Y_so
+
+VIA VIATPsw_Y_so DEFAULT
+    RESISTANCE 2.0 ;
+    LAYER MET4 ;
+        RECT -0.240 -0.290 0.140 0.190 ;
+    LAYER VIATP ;
+        RECT -0.230 -0.230 0.130 0.130 ;
+    LAYER METTP ;
+        RECT -0.320 -0.320 0.220 0.220 ;
+END VIATPsw_Y_so
+
+#############
+
+VIA VIATP_CH1_so DEFAULT
+    RESISTANCE 1.00 ;
+    LAYER METTP ;
+        RECT -0.170 -0.270 1.080 0.270 ;
+    LAYER VIATP ;
+        RECT -0.080 -0.180 0.280 0.180 ;
+        RECT  0.630 -0.180 0.990 0.180 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.190 1.050 0.190 ;
+END VIATP_CH1_so
+
+VIA VIATP_CH1n_so DEFAULT
+    RESISTANCE 1.00 ;
+    LAYER METTP ;
+        RECT -0.170 -0.220 1.080 0.320 ;
+    LAYER VIATP ;
+        RECT -0.080 -0.130 0.280 0.230 ;
+        RECT  0.630 -0.130 0.990 0.230 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.140 1.050 0.240 ;
+END VIATP_CH1n_so
+
+VIA VIATP_CH1s_so DEFAULT
+    RESISTANCE 1.00 ;
+    LAYER METTP ;
+        RECT -0.170 -0.320 1.080 0.220 ;
+    LAYER VIATP ;
+        RECT -0.080 -0.230 0.280 0.130 ;
+        RECT  0.630 -0.230 0.990 0.130 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.240 1.050 0.140 ;
+END VIATP_CH1s_so
+
+VIA VIATP_CH1n_beo DEFAULT
+    RESISTANCE 1.00 ;
+    LAYER METTP ;
+        RECT -0.170 -0.200 1.140 0.400 ;
+    LAYER VIATP ;
+        RECT -0.050 -0.080 0.310 0.280 ;
+        RECT  0.660 -0.080 1.020 0.280 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.140 1.110 0.340 ;
+END VIATP_CH1n_beo
+
+VIA VIATP_CH1s_beo DEFAULT
+    RESISTANCE 1.00 ;
+    LAYER METTP ;
+        RECT -0.170 -0.400 1.140 0.200 ;
+    LAYER VIATP ;
+        RECT -0.050 -0.280 0.310 0.080 ;
+        RECT  0.660 -0.280 1.020 0.080 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.340 1.110 0.140 ;
+END VIATP_CH1s_beo
+
+VIA VIATP_CH2_so DEFAULT
+    RESISTANCE 1.00 ;
+    LAYER METTP ;
+        RECT -1.080 -0.270  0.170 0.270 ;
+    LAYER VIATP ;
+        RECT -0.280 -0.180  0.080 0.180 ;
+        RECT -0.990 -0.180 -0.630 0.180 ;
+    LAYER MET4 ;
+        RECT -1.050 -0.190  0.140 0.190 ;
+END VIATP_CH2_so
+
+VIA VIATP_CH2n_so DEFAULT
+    RESISTANCE 1.00 ;
+    LAYER METTP ;
+        RECT -1.080 -0.220  0.170 0.320 ;
+    LAYER VIATP ;
+        RECT -0.280 -0.130  0.080 0.230 ;
+        RECT -0.990 -0.130 -0.630 0.230 ;
+    LAYER MET4 ;
+        RECT -1.050 -0.140  0.140 0.240 ;
+END VIATP_CH2n_so
+
+VIA VIATP_CH2s_so DEFAULT
+    RESISTANCE 1.00 ;
+    LAYER METTP ;
+        RECT -1.080 -0.320  0.170 0.220 ;
+    LAYER VIATP ;
+        RECT -0.280 -0.230  0.080 0.130 ;
+        RECT -0.990 -0.230 -0.630 0.130 ;
+    LAYER MET4 ;
+        RECT -1.050 -0.240  0.140 0.140 ;
+END VIATP_CH2s_so
+
+VIA VIATP_CH2n_beo DEFAULT
+    RESISTANCE 1.00 ;
+    LAYER METTP ;
+        RECT -1.140 -0.200  0.170 0.400 ;
+    LAYER VIATP ;
+        RECT -0.310 -0.080  0.050 0.280 ;
+        RECT -1.020 -0.080 -0.660 0.280 ;
+    LAYER MET4 ;
+        RECT -1.110 -0.140  0.140 0.340 ;
+END VIATP_CH2n_beo
+
+VIA VIATP_CH2s_beo DEFAULT
+    RESISTANCE 1.00 ;
+    LAYER METTP ;
+        RECT -1.140 -0.400  0.170 0.200 ;
+    LAYER VIATP ;
+        RECT -0.310 -0.280  0.050 0.080 ;
+        RECT -1.020 -0.280 -0.660 0.080 ;
+    LAYER MET4 ;
+        RECT -1.110 -0.340  0.140 0.140 ;
+END VIATP_CH2s_beo
+
+VIA VIATP_CV1_so DEFAULT
+    RESISTANCE 1.00 ;
+    LAYER METTP ;
+        RECT -0.270 -0.980 0.270  0.270 ;
+    LAYER VIATP ;
+        RECT -0.180 -0.180 0.180  0.180 ;
+        RECT -0.180 -0.890 0.180 -0.530 ;
+    LAYER MET4 ;
+        RECT -0.240 -0.900 0.240  0.190 ;
+END VIATP_CV1_so
+
+VIA VIATP_CV1se_so DEFAULT
+    RESISTANCE 1.00 ;
+    LAYER METTP ;
+        RECT -0.170 -1.030 0.370  0.220 ;
+    LAYER VIATP ;
+        RECT -0.080 -0.230 0.280  0.130 ;
+        RECT -0.080 -0.940 0.280 -0.580 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.950 0.340  0.140 ;
+END VIATP_CV1se_so
+
+
+VIA VIATP_CV1sw_so DEFAULT
+    RESISTANCE 1.00 ;
+    LAYER METTP ;
+        RECT -0.370 -1.030 0.170  0.220 ;
+    LAYER VIATP ;
+        RECT -0.280 -0.230 0.080  0.130 ;
+        RECT -0.280 -0.940 0.080 -0.580 ;
+    LAYER MET4 ;
+        RECT -0.340 -0.950 0.140  0.140 ;
+END VIATP_CV1sw_so
+
+
+VIA VIATP_CV1e_beo DEFAULT
+    RESISTANCE 1.00 ;
+    LAYER METTP ;
+        RECT -0.220 -1.140 0.380  0.170 ;
+    LAYER VIATP ;
+        RECT -0.100 -0.310 0.260  0.050 ;
+        RECT -0.100 -1.020 0.260 -0.660 ;
+    LAYER MET4 ;
+        RECT -0.160 -1.110 0.320  0.140 ;
+END VIATP_CV1e_beo
+
+VIA VIATP_CV1w_beo DEFAULT
+    RESISTANCE 1.00 ;
+    LAYER METTP ;
+        RECT -0.380 -1.140 0.220  0.170 ;
+    LAYER VIATP ;
+        RECT -0.260 -0.310 0.100  0.050 ;
+        RECT -0.260 -1.020 0.100 -0.660 ;
+    LAYER MET4 ;
+        RECT -0.320 -1.110 0.160  0.140 ;
+END VIATP_CV1w_beo
+
+VIA VIATP_CV2_so DEFAULT
+    RESISTANCE 1.00 ;
+    LAYER METTP ;
+        RECT -0.270 -0.270 0.270 0.980 ;
+    LAYER VIATP ;
+        RECT -0.180 -0.180 0.180 0.180 ;
+        RECT -0.180  0.530 0.180 0.890 ;
+    LAYER MET4 ;
+        RECT -0.240 -0.190 0.240 0.900 ;
+END VIATP_CV2_so
+
+VIA VIATP_CV2ne_so DEFAULT
+    RESISTANCE 1.00 ;
+    LAYER METTP ;
+        RECT -0.170 -0.220 0.370 1.030 ;
+    LAYER VIATP ;
+        RECT -0.080 -0.130 0.280 0.230 ;
+        RECT -0.080  0.580 0.280 0.940 ;
+    LAYER MET4 ;
+        RECT -0.140 -0.240 0.340 0.950 ;
+END VIATP_CV2ne_so
+
+VIA VIATP_CV2nw_so DEFAULT
+    RESISTANCE 1.00 ;
+    LAYER METTP ;
+        RECT -0.370 -0.220 0.170 1.030 ;
+    LAYER VIATP ;
+        RECT -0.280 -0.130 0.080 0.230 ;
+        RECT -0.280  0.580 0.080 0.940 ;
+    LAYER MET4 ;
+        RECT -0.340 -0.240 0.140 0.950 ;
+END VIATP_CV2nw_so
+
+VIA VIATP_CV2e_beo DEFAULT
+    RESISTANCE 1.00 ;
+    LAYER METTP ;
+        RECT -0.220 -0.170 0.380 1.140 ;
+    LAYER VIATP ;
+        RECT -0.100 -0.050 0.260 0.310 ;
+        RECT -0.100  0.660 0.260 1.020 ;
+    LAYER MET4 ;
+        RECT -0.160 -0.140 0.320 1.110 ;
+END VIATP_CV2e_beo
+
+VIA VIATP_CV2w_beo DEFAULT
+    RESISTANCE 1.00 ;
+    LAYER METTP ;
+        RECT -0.380 -0.170 0.220 1.140 ;
+    LAYER VIATP ;
+        RECT -0.260 -0.050 0.100 0.310 ;
+        RECT -0.260  0.660 0.100 1.020 ;
+    LAYER MET4 ;
+        RECT -0.320 -0.140 0.160 1.110 ;
+END VIATP_CV2w_beo
+
+#############
+VIA VIATPL_so DEFAULT
+    RESISTANCE 1.2 ;
+    LAYER METTP ;
+        RECT -0.750 -0.750 0.750 0.750 ;
+    LAYER VIATPL ;
+        RECT -0.250 -0.250 0.250 0.250 ;
+    LAYER METTPL ;
+        RECT -1.500 -1.500 1.500 1.500 ;
+END VIATPL_so
+
+VIA VIATPL_eo DEFAULT
+    RESISTANCE 1.2 ;
+    LAYER METTP ;
+        RECT -0.850 -0.850 0.850 0.850 ;
+    LAYER VIATPL ;
+        RECT -0.250 -0.250 0.250 0.250 ;
+    LAYER METTPL ;
+        RECT -1.500 -1.500 1.500 1.500 ;
+END VIATPL_eo
+
+VIA VIATPL_beo DEFAULT
+    RESISTANCE 1.2 ;
+    LAYER METTP ;
+        RECT -1.000 -1.000 1.000 1.000 ;
+    LAYER VIATPL ;
+        RECT -0.250 -0.250 0.250 0.250 ;
+    LAYER METTPL ;
+        RECT -1.500 -1.500 1.500 1.500 ;
+END VIATPL_beo
+
+#############
+VIA VIATPL_CH_so DEFAULT
+    RESISTANCE 0.6 ;
+    LAYER METTPL ;
+        RECT -1.500 -1.500  1.500 1.500 ;
+    LAYER VIATPL ;
+        RECT -0.750 -0.250 -0.250 0.250 ;
+        RECT  0.250 -0.250  0.750 0.250 ;
+    LAYER METTP ;
+        RECT -1.250 -0.750  1.250 0.750 ;
+END VIATPL_CH_so
+
+VIA VIATPL_CH_eo DEFAULT
+    RESISTANCE 0.6 ;
+    LAYER METTPL ;
+        RECT -1.500 -1.500  1.500 1.500 ;
+    LAYER VIATPL ;
+        RECT -0.750 -0.250 -0.250 0.250 ;
+        RECT  0.250 -0.250  0.750 0.250 ;
+    LAYER METTP ;
+        RECT -1.350 -0.850  1.350 0.850 ;
+END VIATPL_CH_eo
+
+VIA VIATPL_CV_so DEFAULT
+    RESISTANCE 0.6 ;
+    LAYER METTPL ;
+        RECT -1.500 -1.500 1.500  1.500 ;
+    LAYER VIATPL ;
+        RECT -0.250 -0.750 0.250 -0.250 ;
+        RECT -0.250  0.250 0.250  0.750 ;
+    LAYER METTP ;
+        RECT -0.750 -1.250 0.750  1.250 ;
+END VIATPL_CV_so
+
+VIA VIATPL_CV_eo DEFAULT
+    RESISTANCE 0.6 ;
+    LAYER METTPL ;
+        RECT -1.500 -1.500 1.500  1.500 ;
+    LAYER VIATPL ;
+        RECT -0.250 -0.750 0.250 -0.250 ;
+        RECT -0.250  0.250 0.250  0.750 ;
+    LAYER METTP ;
+        RECT -0.850 -1.350 0.850  1.350 ;
+END VIATPL_CV_eo
+
+#############
+
+VIARULE via1Array GENERATE
+    LAYER MET1 ;
+        ENCLOSURE 0.060 0.010 ;
+
+    LAYER MET2 ;
+        ENCLOSURE 0.060 0.010 ;
+
+    LAYER VIA1 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+        SPACING 0.520 BY 0.520 ;
+        RESISTANCE 4.5 ;
+END via1Array
+
+VIARULE via2Array GENERATE
+    LAYER MET2 ;
+        ENCLOSURE 0.060 0.010 ;
+
+    LAYER MET3 ;
+        ENCLOSURE 0.060 0.010 ;
+
+    LAYER VIA2 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+        SPACING 0.520 BY 0.520 ;
+        RESISTANCE 4.5 ;
+END via2Array
+
+VIARULE via3Array GENERATE
+    LAYER MET3 ;
+        ENCLOSURE 0.060 0.010 ;
+
+    LAYER MET4 ;
+        ENCLOSURE 0.060 0.010 ;
+
+    LAYER VIA3 ;
+        RECT -0.130 -0.130 0.130 0.130 ;
+        SPACING 0.520 BY 0.520 ;
+        RESISTANCE 4.5 ;
+END via3Array
+
+VIARULE viaTPArray GENERATE
+    LAYER MET4 ;
+        ENCLOSURE 0.060 0.010 ;
+
+    LAYER METTP ;
+        ENCLOSURE 0.090 0.090 ;
+
+    LAYER VIATP ;
+        RECT -0.180 -0.180 0.180 0.180 ;
+        SPACING 0.710 BY 0.710 ;
+        RESISTANCE 2.0 ;
+END viaTPArray
+
+VIARULE viaTPLArray GENERATE
+    LAYER METTP ;
+        ENCLOSURE 0.50 0.50 ;
+
+    LAYER METTPL ;
+        ENCLOSURE 0.50 0.50 ;
+
+    LAYER VIATPL ;
+        RECT -0.250 -0.250 0.250 0.250 ;
+        SPACING 1.0 BY 1.0 ;
+        RESISTANCE 1.2 ;
+END viaTPLArray
+
+END LIBRARY

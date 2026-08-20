@@ -1,0 +1,26 @@
+::db::check_and_set_root_attr extract_rc_engine pre_route
+::db::check_and_set_root_attr add_rings_avoid_short true
+::db::check_and_set_root_attr delaycal_enable_high_fanout true
+::db::check_and_set_root_attr delaycal_enable_ideal_seq_async_pins false
+::db::check_and_set_root_attr delaycal_eng_enablepreplacedflow false
+::db::check_and_set_root_attr delaycal_ignore_net_load false
+::db::check_and_set_root_attr extract_rc_coupling_cap_threshold 3.0
+::db::check_and_set_root_attr extract_rc_relative_cap_threshold 0.03
+::db::check_and_set_root_attr extract_rc_total_cap_threshold 5.0
+::db::check_and_set_root_attr floorplan_default_tech_site core_hd
+::db::check_and_set_root_attr floorplan_first_row_site_index 0
+::db::check_and_set_root_attr floorplan_last_row_site_index -1
+::db::check_and_set_root_attr floorplan_max_io_height false
+::db::check_and_set_root_attr ilm_keep_high_fanout_critical_insts false
+::db::check_and_set_root_attr opt_drv true
+::db::check_and_set_root_attr opt_drv_margin 0.0
+::db::check_and_set_root_attr opt_resize_flip_flops true
+::db::check_and_set_root_attr opt_setup_target_slack 0.0
+::db::check_and_set_root_attr opt_view_pruning_hold_views_active_list { analysis_normal_fast_min }
+::db::check_and_set_root_attr opt_view_pruning_setup_views_active_list { analysis_normal_slow_max }
+::db::check_and_set_root_attr opt_view_pruning_setup_views_persistent_list { analysis_normal_slow_max}
+::db::check_and_set_root_attr opt_view_pruning_tdgr_setup_views_persistent_list { analysis_normal_slow_max}
+::db::check_and_set_root_attr place_global_place_io_pins true
+::db::check_and_set_root_attr route_extract_third_party_compatible false
+::db::check_and_set_root_attr route_global_exp_timing_driven_std_delay 117.7
+::db::check_and_set_root_attr write_def_stream_check_uncolored false
