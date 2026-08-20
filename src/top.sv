@@ -17,6 +17,12 @@ logic read_enable_uart;
 logic read_from_funky, data_ready;
 logic [7:0] data_out;
 logic [31:0] data_to_funky;
+logic wr;
+
+logic [31:0] data_w_uart;
+
+
+assign data_w_uart [7:0] = {24'b0000_0000_0000_0000_0000_0000,data_out};
 
 
 simpleuart uart(
@@ -30,9 +36,9 @@ simpleuart uart(
 //	input  [31:0] reg_div_di,
 //	output [31:0] reg_div_do,
 
-	//.reg_dat_we(),
+	.reg_dat_we(wr),
 	.reg_dat_re(read_enable_uart),
-	//.reg_dat_di(),
+	.reg_dat_di(data_w_uart),
         .reg_dat_do(dat_do),
 	//.reg_dat_wait(),
         .buf_valid(uart_recv_valid)
@@ -60,7 +66,8 @@ funky_cu funky(
     .din(data_to_funky),
     .dout(data_out),
     .done_reading(read_from_funky),
-    .juanito_data_available(data_ready)
+    .juanito_data_available(data_ready),
+    .write_result(wr)
 );
 
 endmodule

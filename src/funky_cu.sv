@@ -7,10 +7,11 @@ module funky_cu(
     output logic [7:0] dout,
 
     output logic done_reading,
-    input logic juanito_data_available
+    input logic juanito_data_available,
+    output logic write_result
 );
 
-typedef enum logic [1:0] { IDLE, READ, COMPUTE, DONE } state;
+typedef enum logic [2:0] { IDLE, READ, COMPUTE, DONE, SEND } state;
 state p_state, n_state;
 
 always_ff @(posedge clk or negedge rst_n) begin
@@ -34,6 +35,7 @@ always_comb begin
 
         IDLE: begin
             done_reading = 1'b0;
+            write_result = 1'b0;
             n_state = juanito_data_available ? READ : IDLE;
         end
 
@@ -44,6 +46,11 @@ always_comb begin
 
         COMPUTE: begin
             //dout = 8'b10011001;
+            n_state = SEND;
+        end
+
+        SEND: begin
+            write_result = 1'b1;
             n_state = DONE;
         end
 
@@ -53,9 +60,7 @@ always_comb begin
         end
 
         default: n_state = IDLE;
-
     endcase
-
 end
 
 endmodule
