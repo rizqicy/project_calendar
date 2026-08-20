@@ -72,7 +72,7 @@ task automatic reference_model (
     endcase
 
     //Step 2.2
-    if ((year_34 % 4 == 0 &&  year_34 != 0) || (year_34 == 2'b00 && year_12 % 4 == 0)) begin
+    if (((year_34 % 4 == 0 &&  year_34 != 0) || (year_34 == 2'd00 && year_12 % 4 == 0)) && (month == 8'd1 || month == 8'd2 ) begin
         two_one--;
     end
 
